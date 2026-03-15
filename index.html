@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Virola — Business Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#f8f7f4;font-family:'Outfit',sans-serif;color:#1a1a1a;min-height:100vh}
+
+:root{
+  --accent:#185FA5;
+  --accent-light:#E6F1FB;
+  --accent-mid:#378ADD;
+  --serif:'DM Serif Display',serif;
+  --sans:'Outfit',sans-serif;
+  --mono:'DM Mono',monospace;
+  --border:#e5e3de;
+  --muted:#666;
+  --faint:#999;
+}
+
+.wrapper{max-width:800px;margin:0 auto;padding:2rem 1.25rem 5rem}
+
+header{padding:2.5rem 0 2rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.header-label{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem}
+.header-title{font-family:var(--serif);font-size:clamp(32px,6vw,52px);line-height:1.05;color:#1a1a1a;margin-bottom:.75rem}
+.header-sub{font-size:16px;color:var(--muted);line-height:1.6;max-width:480px}
+
+nav{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:2rem;position:sticky;top:0;background:#f8f7f4;padding:12px 0;z-index:10;border-bottom:1px solid var(--border)}
+nav button{font-family:var(--mono);font-size:11px;font-weight:500;padding:5px 12px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+nav button.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+nav button:hover:not(.active){border-color:var(--accent-mid);color:var(--accent)}
+
+.slide{display:none;animation:fadeIn .3s ease}
+.slide.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.slide-header{margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.slide-num{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.08em;margin-bottom:.5rem}
+.slide-title{font-family:var(--serif);font-size:clamp(28px,5vw,42px);color:#1a1a1a;line-height:1.1}
+.slide-sub{font-size:15px;color:var(--muted);margin-top:.6rem;line-height:1.65;max-width:520px}
+
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:1.5rem 0}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1.25rem}
+.card-label{font-size:11px;font-family:var(--mono);color:var(--faint);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.4rem}
+.card-val{font-size:18px;font-weight:500;color:#1a1a1a;margin-bottom:.35rem}
+.card-desc{font-size:13px;color:var(--muted);line-height:1.55}
+
+.row-list{display:flex;flex-direction:column;gap:10px;margin:1.5rem 0}
+.row-item{display:flex;align-items:flex-start;gap:14px;padding:14px 16px;background:#fff;border:1px solid var(--border);border-radius:12px}
+.row-num{font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--accent-light);padding:3px 8px;border-radius:4px;flex-shrink:0;margin-top:2px;font-weight:500}
+.row-content{}
+.row-title{font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:4px}
+.row-desc{font-size:13px;color:var(--muted);line-height:1.55}
+
+.price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin:1.5rem 0}
+.price-card{border:1px solid var(--border);border-radius:12px;padding:1.25rem;background:#fff}
+.price-card.featured{border-color:var(--accent);border-width:2px}
+.price-badge{font-size:10px;font-family:var(--mono);background:var(--accent-light);color:var(--accent);padding:3px 9px;border-radius:4px;display:inline-block;margin-bottom:.75rem;text-transform:uppercase}
+.price-name{font-size:13px;font-weight:500;color:#1a1a1a;margin-bottom:.3rem}
+.price-val{font-family:var(--serif);font-size:30px;color:#1a1a1a;line-height:1}
+.price-per{font-size:12px;color:var(--muted);margin-bottom:.75rem}
+.price-items{list-style:none;display:flex;flex-direction:column;gap:5px}
+.price-items li{font-size:12px;color:var(--muted);padding-left:14px;position:relative;line-height:1.4}
+.price-items li::before{content:'—';position:absolute;left:0;color:#ccc}
+
+.tool-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:1.5rem 0}
+.tool-chip{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 12px;text-align:center}
+.tool-name{font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:3px}
+.tool-role{font-size:11px;color:var(--muted)}
+
+.roadmap{display:flex;flex-direction:column;margin:1.5rem 0;position:relative}
+.roadmap::before{content:'';position:absolute;left:20px;top:0;bottom:0;width:1px;background:var(--border)}
+.road-step{display:flex;gap:16px;align-items:flex-start;padding-bottom:1.75rem}
+.road-dot{width:40px;height:40px;border-radius:50%;background:#fff;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;font-family:var(--mono);font-size:11px;font-weight:500;color:var(--accent)}
+.road-dot.done{background:var(--accent);color:#fff}
+.road-body{flex:1;padding-top:9px}
+.road-month{font-size:11px;font-family:var(--mono);color:var(--faint);margin-bottom:.3rem}
+.road-task{font-size:15px;font-weight:500;color:#1a1a1a;margin-bottom:.35rem}
+.road-tasks{display:flex;flex-direction:column;gap:4px}
+.road-tasks span{font-size:13px;color:var(--muted)}
+
+.target-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin:1.5rem 0}
+.target-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:1rem}
+.target-type{font-family:var(--mono);font-size:10px;color:var(--accent);margin-bottom:.4rem;text-transform:uppercase}
+.target-name{font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:.35rem}
+.target-why{font-size:12px;color:var(--muted);line-height:1.55}
+
+.reach-list{display:flex;flex-direction:column;gap:10px;margin:1.5rem 0}
+.reach-step{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.reach-label{font-family:var(--mono);font-size:10px;color:var(--faint);margin-bottom:.35rem;text-transform:uppercase}
+.reach-title{font-size:14px;font-weight:500;color:#1a1a1a;margin-bottom:.35rem}
+.reach-copy{font-size:13px;color:var(--muted);line-height:1.6}
+.reach-copy strong{color:#1a1a1a;font-weight:500}
+
+.goal-list{display:flex;flex-direction:column;gap:10px;margin:1.5rem 0}
+.goal-item{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;background:#fff;border:1px solid var(--border);border-radius:12px;gap:12px}
+.goal-text{font-size:14px;color:#1a1a1a}
+.goal-when{font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--accent-light);padding:3px 9px;border-radius:4px;white-space:nowrap}
+
+.slide-footer{margin-top:2.5rem;padding-top:1rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.footer-brand{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.footer-nav{display:flex;gap:8px}
+.footer-nav button{font-family:var(--mono);font-size:11px;padding:6px 14px;border:1px solid var(--border);border-radius:20px;background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
+.footer-nav button:hover{border-color:var(--accent);color:var(--accent)}
+
+@media(max-width:480px){
+  .goal-item{flex-direction:column;align-items:flex-start}
+  nav{gap:4px}
+  nav button{font-size:10px;padding:4px 9px}
+}
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <header>
+    <div class="header-label">Business Plan — 2025</div>
+    <div class="header-title">Virola</div>
+    <div class="header-sub">A lean, AI-powered growth business helping local small businesses scale with content, emails, and automation.</div>
+  </header>
+
+  <nav id="nav">
+    <button class="active" onclick="go(0)">01 intro</button>
+    <button onclick="go(1)">02 problem</button>
+    <button onclick="go(2)">03 services</button>
+    <button onclick="go(3)">04 clients</button>
+    <button onclick="go(4)">05 outreach</button>
+    <button onclick="go(5)">06 pricing</button>
+    <button onclick="go(6)">07 tools</button>
+    <button onclick="go(7)">08 roadmap</button>
+    <button onclick="go(8)">09 goals</button>
+  </nav>
+
+  <!-- SLIDE 1 -->
+  <div class="slide active" id="s0">
+    <div class="slide-header">
+      <div class="slide-num">01 / intro</div>
+      <div class="slide-title">My AI Services Business</div>
+      <div class="slide-sub">Virola is my AI-powered growth business. I help local small businesses scale with content, emails, and automation — without hiring a full agency.</div>
+    </div>
+    <div class="card-grid">
+      <div class="card"><div class="card-label">what i do</div><div class="card-val">AI-Assisted Services</div><div class="card-desc">Social content, email sequences & automations — built with AI, delivered by me.</div></div>
+      <div class="card"><div class="card-label">who i serve</div><div class="card-val">Local Small Biz</div><div class="card-desc">Gyms, barbers, restaurants — people too busy to do their own digital marketing.</div></div>
+      <div class="card"><div class="card-label">my edge</div><div class="card-val">Speed + Price</div><div class="card-desc">AI lets me deliver agency-quality work at a fraction of the cost and time.</div></div>
+      <div class="card"><div class="card-label">my goal</div><div class="card-val">$1K / month</div><div class="card-desc">First paying client by month 2. $1,000/month recurring by end of year.</div></div>
+    </div>
+    <div class="slide-footer"><span class="footer-brand">virola</span><div class="footer-nav"><button onclick="go(1)">next →</button></div></div>
+  </div>
+
+  <!-- SLIDE 2 -->
+  <div class="slide" id="s1">
+    <div class="slide-header">
+      <div class="slide-num">02 / problem</div>
+      <div class="slide-title">The problem I solve</div>
+      <div class="slide-sub">Small businesses are losing customers to competitors with better digital presence — but they don't have time or budget to fix it.</div>
+    </div>
+    <div class="row-list">
+      <div class="row-item"><span class="row-num">01</span><div class="row-content"><div class="row-title">No follow-up system</div><div class="row-desc">A new gym member signs up, gets zero emails. They lose motivation and cancel. The gym has no idea why.</div></div></div>
+      <div class="row-item"><span class="row-num">02</span><div class="row-content"><div class="row-title">Inconsistent social media</div><div class="row-desc">They post twice in January, disappear for 6 weeks, wonder why their follower count doesn't grow.</div></div></div>
+      <div class="row-item"><span class="row-num">03</span><div class="row-content"><div class="row-title">Everything done manually</div><div class="row-desc">Booking confirmations, review requests, reminder texts — all done by hand. Hours wasted every week.</div></div></div>
+      <div class="row-item"><span class="row-num">04</span><div class="row-content"><div class="row-title">Agencies are too expensive</div><div class="row-desc">A local marketing agency charges $2K+/month. A solo operator like me can do the same work for a fraction.</div></div></div>
+    </div>
+    <div class="slide-footer"><span class="footer-brand">virola</span><div class="footer-nav"><button onclick="go(0)">← prev</button><button onclick="go(2)">next →</button></div></div>
+  </div>
+
+  <!-- SLIDE 3 -->
+  <div class="slide" id="s2">
+    <div class="slide-header">
+      <div class="slide-num">03 / services</div>
+      <div class="slide-title">My 3 services</div>
+      <div class="slide-sub">All three use AI to do the heavy lifting. I handle strategy, delivery, and client communication.</div>
+    </div>
+    <div class="row-list">
+      <div class="row-item"><span class="row-num">S1</span><div class="row-content"><div class="row-title">AI Social Media Content</div><div class="row-desc">Monthly content packages for local businesses — graphics, captions, reels thumbnails. Built with Canva AI and Claude. Hands-off for the client.</div></div></div>
+      <div class="row-item"><span class="row-num">S2</span><div class="row-content"><div class="row-title">Email Sequences</div><div class="row-desc">Welcome flows, re-engagement, and promos — written with AI, set up in Mailchimp or Klaviyo. Runs automatically once built.</div></div></div>
+      <div class="row-item"><span class="row-num">S3</span><div class="row-content"><div class="row-title">Simple Automations</div><div class="row-desc">Connect tools with Zapier or Make — new signup triggers an email, booking sends a reminder, cancellation alerts the owner.</div></div></div>
+    </div>
+    <div class="slide-footer"><span class="footer-brand">virola</span><div class="footer-nav"><button onclick="go(1)">← prev</button><button onclick="go(3)">next →</button></div></div>
+  </div>
+
+  <!-- SLIDE 4 -->
+  <div class="slide" id="s3">
+    <div class="slide-header">
+      <div class="slide-num">04 / clients</div>
+      <div class="slide-title">Who I work with</div>
+      <div class="slide-sub">Local service businesses with a physical location, repeat customers, and no real digital system in place.</div>
+    </div>
+    <div class="target-grid">
+      <div class="target-card"><div class="target-type">primary</div><div class="target-name">Gyms & fitness studios</div><div class="target-why">High member turnover, need onboarding emails & class promos. Already have a sample sequence ready.</div></div>
+      <div class="target-card"><div class="target-type">primary</div><div class="target-name">Barbers & salons</div><div class="target-why">Rely on repeat bookings. Re-engagement emails + appointment reminders = direct revenue.</div></div>
+      <div class="target-card"><div class="target-type">secondary</div><div class="target-name">Restaurants & cafes</div><div class="target-why">Need consistent social content and seasonal promos. High volume, easy to replicate.</div></div>
+      <div class="target-card"><div class="target-type">secondary</div><div class="target-name">Small retail shops</div><div class="target-why">Want more foot traffic and online presence. Simple content package is a good fit.</div></div>
+    </div>
+    <div class="slide-footer"><span class="footer-brand">virola</span><div class="footer-nav"><button onclick="go(2)">← prev</button><button onclick="go(4)">next →</button></div></div>
+  </div>
+
+  <!-- SLIDE 5 -->
+  <div class="slide" id="s4">
+    <div class="slide-header">
+      <div class="slide-num">05 / outreach</div>
+      <div class="slide-title">How I get clients</div>
+      <div class="slide-sub">No cold calling. No ads. Just direct, human outreach on platforms they already use — with something real to show.</div>
+    </div>
+    <div class="reach-list">
+      <div class="reach-step"><div class="reach-label">step 01</div><div class="reach-title">Find them on Instagram</div><div class="reach-copy">Search local gym, barber, or restaurant accounts. Look for ones with <strong>low engagement or irregular posting</strong> — that's the problem I solve.</div></div>
+      <div class="reach-step"><div class="reach-label">step 02</div><div class="reach-title">Send a short, specific DM</div><div class="reach-copy"><strong>"Hey — I noticed you haven't posted in a few weeks. I help local gyms set up automated content and emails. I built a free sample — mind if I send it over?"</strong></div></div>
+      <div class="reach-step"><div class="reach-label">step 03</div><div class="reach-title">Offer a free trial week</div><div class="reach-copy">Let them see real results before paying. Use the gym email sequence and Canva posters as proof of quality. Get a testimonial after.</div></div>
+      <div class="reach-step"><div class="reach-label">step 04</div><div class="reach-title">Convert to a retainer</div><div class="reach-copy">After the trial: <strong>"Want me to keep running this for $150/month?"</strong> — most say yes if the work is good. That's recurring revenue.</div></div>
+    </div>
+    <div class="slide-footer"><span class="footer-brand">virola</span><div class="footer-nav"><button onclick="go(3)">← prev</button><button onclick="go(5)">next →</button></div></div>
+  </div>
+
+  <!-- SLIDE 6 -->
+  <div class="slide" id="s5">
+    <div class="slide-header">
+      <div class="slide-num">06 / pricing</div>
+      <div class="slide-title">Pricing & packages</div>
+      <div class="slide-sub">Simple, transparent pricing. Starting low to build trust and testimonials, scaling up as reputation grows.</div>
+    </div>
+    <div class="price-grid">
+      <div class="price-card"><div class="price-badge">starter</div><div class="price-name">Social Content Pack</div><div class="price-val">$150</div><div class="price-per">per month</div><ul class="price-items"><li>8 posts/month</li><li>Captions + graphics</li><li>Canva AI assisted</li><li>1 revision round</li></ul></div>
+      <div class="price-card featured"><div class="price-badge">popular</div><div class="price-name">Email Sequence Setup</div><div class="price-val">$300</div><div class="price-per">one-time</div><ul class="price-items"><li>6-email welcome flow</li><li>Full copywriting</li><li>Mailchimp setup</li><li>Poster graphics</li></ul></div>
+      <div class="price-card"><div class="price-badge">premium</div><div class="price-name">Meta Ads Management</div><div class="price-val">$400</div><div class="price-per">per month</div><ul class="price-items"><li>Facebook + Instagram ads</li><li>Ad copy + creative</li><li>Targeting & budgeting</li><li>Weekly performance report</li></ul></div>
+      <div class="price-card"><div class="price-badge">add-on</div><div class="price-name">Automation Setup</div><div class="price-val">$200</div><div class="price-per">one-time</div><ul class="price-items"><li>Zapier / Make.com</li><li>2–3 automations</li><li>Form → email trigger</li><li>Booking reminders</li></ul></div>
+      <div class="price-card featured"><div class="price-badge">full package</div><div class="price-name">Virola Growth Package</div><div class="price-val">$1,000</div><div class="price-per">per month</div><ul class="price-items"><li>Meta Ads management</li><li>Email sequences</li><li>Social content</li><li>Automations included</li></ul></div>
+    </div>
+    <div class="slide-footer"><span class="footer-brand">virola</span><div class="footer-nav"><button onclick="go(4)">← prev</button><button onclick="go(6)">next →</button></div></div>
+  </div>
+
+  <!-- SLIDE 7 -->
+  <div class="slide" id="s6">
+    <div class="slide-header">
+      <div class="slide-num">07 / tools</div>
+      <div class="slide-title">Tools I use</div>
+      <div class="slide-sub">All either free or low-cost. No big agency software. Just the right tools for the job.</div>
+    </div>
+    <div class="tool-grid">
+      <div class="tool-chip"><div class="tool-name">Claude</div><div class="tool-role">Writing & strategy</div></div>
+      <div class="tool-chip"><div class="tool-name">ChatGPT</div><div class="tool-role">Ideation & copy</div></div>
+      <div class="tool-chip"><div class="tool-name">Canva</div><div class="tool-role">Design & visuals</div></div>
+      <div class="tool-chip"><div class="tool-name">Zapier</div><div class="tool-role">Automations</div></div>
+      <div class="tool-chip"><div class="tool-name">Make.com</div><div class="tool-role">Advanced flows</div></div>
+      <div class="tool-chip"><div class="tool-name">Mailchimp</div><div class="tool-role">Email delivery</div></div>
+      <div class="tool-chip"><div class="tool-name">Instagram</div><div class="tool-role">Client outreach</div></div>
+      <div class="tool-chip"><div class="tool-name">Notion</div><div class="tool-role">Client tracking</div></div>
+    </div>
+    <div class="slide-footer"><span class="footer-brand">virola</span><div class="footer-nav"><button onclick="go(5)">← prev</button><button onclick="go(7)">next →</button></div></div>
+  </div>
+
+  <!-- SLIDE 8 -->
+  <div class="slide" id="s7">
+    <div class="slide-header">
+      <div class="slide-num">08 / roadmap</div>
+      <div class="slide-title">90-day roadmap</div>
+      <div class="slide-sub">Three focused months. Learn, launch, earn.</div>
+    </div>
+    <div class="roadmap">
+      <div class="road-step"><div class="road-dot done">M1</div><div class="road-body"><div class="road-month">Month 1 — Learn & Build</div><div class="road-task">Build the foundation</div><div class="road-tasks"><span>Complete Zapier beginner tutorials</span><span>Build gym email sequence ✓</span><span>Create 3 Canva sample posts ✓</span><span>Set up Virola portfolio page ✓</span></div></div></div>
+      <div class="road-step"><div class="road-dot">M2</div><div class="road-body"><div class="road-month">Month 2 — Outreach & Land</div><div class="road-task">Get first paying client</div><div class="road-tasks"><span>DM 30 local businesses on Instagram</span><span>Offer free trial to 3 interested leads</span><span>Deliver work, collect a testimonial</span><span>Convert 1 to a paid project ($150–$300)</span></div></div></div>
+      <div class="road-step"><div class="road-dot">M3</div><div class="road-body"><div class="road-month">Month 3 — Scale to $500</div><div class="road-task">Hit first revenue milestone</div><div class="road-tasks"><span>Turn free client into a retainer</span><span>Land 1–2 more paying clients</span><span>Reach $500 total revenue</span><span>Complete Meta Blueprint free course</span></div></div></div>
+      <div class="road-step"><div class="road-dot">M4</div><div class="road-body"><div class="road-month">Month 4 — Launch Meta Ads</div><div class="road-task">Add paid ads as a Virola service</div><div class="road-tasks"><span>Run a $10 test ad for a current client</span><span>Learn ROAS, CPM, CTR — the key metrics</span><span>Pitch Meta Ads management to existing clients</span><span>Charge $300–$500/mo to manage their ads</span></div></div></div>
+      <div class="road-step"><div class="road-dot">M6</div><div class="road-body"><div class="road-month">Month 5–6 — Full Growth Package</div><div class="road-task">Offer the complete Virola package</div><div class="road-tasks"><span>Bundle emails + content + ads + automation</span><span>Charge $800–$1,200/month per client</span><span>Target 2–3 full package clients</span><span>Hit $1,000/month recurring revenue</span></div></div></div>
+    </div>
+    <div class="slide-footer"><span class="footer-brand">virola</span><div class="footer-nav"><button onclick="go(6)">← prev</button><button onclick="go(8)">next →</button></div></div>
+  </div>
+
+  <!-- SLIDE 9 -->
+  <div class="slide" id="s8">
+    <div class="slide-header">
+      <div class="slide-num">09 / goals</div>
+      <div class="slide-title">My goals</div>
+      <div class="slide-sub">Clear milestones. Each one builds on the last.</div>
+    </div>
+    <div class="goal-list">
+      <div class="goal-item"><span class="goal-text">Land first paying client</span><span class="goal-when">Month 2</span></div>
+      <div class="goal-item"><span class="goal-text">Earn first $500</span><span class="goal-when">Month 3</span></div>
+      <div class="goal-item"><span class="goal-text">Get first retainer client ($150+/mo)</span><span class="goal-when">Month 4</span></div>
+      <div class="goal-item"><span class="goal-text">Have 3 active clients simultaneously</span><span class="goal-when">Month 5–6</span></div>
+      <div class="goal-item"><span class="goal-text">Reach $1,000/month recurring</span><span class="goal-when">Month 9–12</span></div>
+      <div class="goal-item"><span class="goal-text">Build a small portfolio site</span><span class="goal-when">Month 6</span></div>
+      <div class="goal-item"><span class="goal-text">Hire a friend to help with content</span><span class="goal-when">Year 2</span></div>
+    </div>
+    <div class="slide-footer"><span class="footer-brand">virola</span><div class="footer-nav"><button onclick="go(7)">← prev</button><button onclick="go(0)">↩ start</button></div></div>
+  </div>
+
+</div>
+<script>
+function go(n){
+  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===n));
+  document.querySelectorAll('nav button').forEach((b,i)=>b.classList.toggle('active',i===n));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
